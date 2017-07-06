@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using AutoMapper;
 using BLL;
 using MagicWebsite.Models;
+
 namespace MagicWebsite.Controllers
 {
     /*This controller handles any function the User may do with their account.
