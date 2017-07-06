@@ -1,0 +1,54 @@
+﻿@model MagicWebsite.Models.UserVM
+@{
+    ViewBag.Title = "Your Personal Information";
+}
+<h2>Your Personal Information</h2>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <strong>First Name</strong>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt>
+            <strong>Last Name</strong>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt>
+            <strong>User Name</strong>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+        <dt>
+            <strong>Email</strong>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        @if ((string)Session["Role"] == "Admin")
+        {
+            <dt>
+                <strong>Role</strong>
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Role)
+            </dd>
+        }
+        @Html.ActionLink("Reset Password", "PasswordUpdate", new { Email = (string)Session["Email"] })
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "EditUserInfo", new { Email = (string)Session["Email"] })
+    <div>
+        @if ((string)Session["Role"] == "Admin")
+        {
+
+            @Html.ActionLink("List Of Users", "ListOfUsersView")
+        }
+    </div>
+</p>

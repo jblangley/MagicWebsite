@@ -267,10 +267,19 @@
     <Content Include="Views\Card\Shuffle.cshtml" />
     <Content Include="Views\Card\SingleCard.cshtml" />
     <Content Include="Views\Card\UserDecks.cshtml" />
+    <Content Include="Views\User\PasswordUpdate.cshtml" />
+    <Content Include="Views\User\LoginView.cshtml" />
+    <Content Include="Views\User\ListOfUsersView.cshtml" />
+    <Content Include="Views\User\IndivdualUserInfo.cshtml" />
+    <Content Include="Views\User\HomeView.cshtml" />
+    <Content Include="Views\User\EditUserInfo.cshtml" />
+    <Content Include="Views\User\DeleteUser.cshtml" />
+    <Content Include="Views\User\Create.cshtml" />
+    <Content Include="Views\User\Contact.cshtml" />
+    <Content Include="Views\User\About.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

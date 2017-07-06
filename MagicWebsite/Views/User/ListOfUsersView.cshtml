@@ -1,0 +1,35 @@
+﻿@model IEnumerable<MagicWebsite.Models.UserVM>
+@{
+    ViewBag.Title = "All Users";
+}
+@if ((string)Session["Role"] == "Admin")
+{
+    <p>
+        <br />
+        @Html.ActionLink("Create New User", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                <strong class="control-label col-md-2">Email</strong>
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email) <br />
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditUserInfo", new { Email = item.Email }) |
+                    @Html.ActionLink("Details", "IndivdualUserInfo", new { Email = item.Email }) |
+                    @Html.ActionLink("Delete", "DeleteUser", new { Email = item.Email })
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <h1>I'm sorry; an error occurred.</h1>
+}

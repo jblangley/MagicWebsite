@@ -1,0 +1,85 @@
+﻿@model MagicWebsite.Models.UserVM
+@{
+    ViewBag.Title = "Update Your Information";
+}
+<h2>Update Your Information</h2>
+@if ((string)Session["Role"] != null)
+{
+    using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            @Html.HiddenFor(model => model.ID)
+            @Html.HiddenFor(model => model.Password)
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <strong class="control-label col-md-2">Email</strong>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <strong class="control-label col-md-2">First Name</strong>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <strong class="control-label col-md-2">Last Name</strong>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <strong class="control-label col-md-2">User Name</strong>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            @if ((string)Session["Role"] == "Admin")
+            {
+                <div class="form-group">
+                    <strong class="control-label col-md-2">Role</strong>
+                    <div class="col-md-10">
+                        <select name="Role">
+                            <option value="User">User</option>
+                            <option value="Mod">Mod</option>
+                            <option value="Admin">Admin</option>
+                        </select>
+                    </div>
+                </div>
+            }
+            else
+            {
+                @Html.HiddenFor(model => model.Role)
+            }
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+    <div>
+        @if ((string)Session["Role"] == "Mod" || (string)Session["Role"] == "User")
+        {
+            @Html.ActionLink("Back", "IndivdualUserInfo", new { Email = (string)Session["Email"] })
+        }
+        else if ((string)Session["Role"] == "Admin")
+        {
+            @Html.ActionLink("Back to List", "ListOfUsersView")
+        }
+    </div>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+}
+else
+{
+    <h1>I'm sorry; an error occurred.</h1>
+}
