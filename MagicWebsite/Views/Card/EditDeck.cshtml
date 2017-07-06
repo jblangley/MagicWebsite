@@ -1,0 +1,29 @@
+﻿@model IEnumerable<MagicWebsite.Models.CardsVM>
+
+@{
+    ViewBag.Title = "Edit Deck";
+}
+
+<h2>Edit Your Deck</h2>
+
+<p>
+    @Html.ActionLink("Shuffle Your Deck", "Shuffle", new { cards = Model })
+</p>
+<table class="table">
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            @Html.HiddenFor(modelItem => item.PictureURL)
+            @Html.HiddenFor(modelItem => item.ID)
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Remove", "DeleteCardFromDeck", new { cardid = item.ID })
+                @Html.ActionLink("Add", "AddCardToDeckFromDeck", new { cardid = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,100 @@
+﻿@model MagicWebsite.Models.CardsVM
+@{
+    ViewBag.Title = "Delete Card";
+}
+@if ((string)Session["Role"] == "Admin" || (string)Session["Role"] == "Mod")
+{
+    <h2>Delete Card</h2>
+    <h3>Are you sure you want to delete this?</h3>
+    using (Html.BeginForm())
+    {
+        <div>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.ID)
+            <dl class="dl-horizontal">
+                <dt>
+                    <strong class="control-label col-md-2">Picture</strong>
+                </dt>
+                <dd>
+                    <img src="@Url.Content(Model.PictureURL)" />
+                </dd>
+                <dt>
+                    <strong class="control-label col-md-2">Name</strong>
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+                <dt>
+                    <strong class="control-label col-md-2">CMC</strong>
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.CMC)
+                </dd>
+                <dt>
+                    <strong class="control-label col-md-2">Card Color</strong>
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.CardColor)
+                </dd>
+                <dt>
+                    <strong class="control-label col-md-2">Attack</strong>
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Attack)
+                </dd>
+                <dt>
+                    <strong class="control-label col-md-2">Defense</strong>
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Defense)
+                </dd>
+                <dt>
+                    <strong class="control-label col-md-2">Cardtype</strong>
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Cardtype)
+                </dd>
+                <dt>
+                    <strong class="control-label col-md-2">Subtype</strong>
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Subtype)
+                </dd>
+                <dt>
+                    <strong class="control-label col-md-2">Ability</strong>
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Ability)
+                </dd>
+                <dt>
+                    <strong class="control-label col-md-2">Rarity</strong>
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Rarity)
+                </dd>
+                <dt>
+                    <strong class="control-label col-md-2">Set</strong>
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Set)
+                </dd>
+                <dt>
+                    <strong class="control-label col-md-2">Flavortext</strong>
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Flavortext)
+                </dd>
+            </dl>
+            @Html.AntiForgeryToken()
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "CardIndex")
+            </div>
+        </div>
+    }
+}
+else
+{
+    <h1> I'm sorry; an error occurred.</h1>
+}

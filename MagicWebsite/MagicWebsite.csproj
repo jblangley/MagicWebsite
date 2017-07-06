@@ -259,6 +259,14 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Card\CardIndex.cshtml" />
     <Content Include="Views\Card\CreateCard.cshtml" />
+    <Content Include="Views\Card\CreateDeck.cshtml" />
+    <Content Include="Views\Card\DeleteCard.cshtml" />
+    <Content Include="Views\Card\DeleteDeck.cshtml" />
+    <Content Include="Views\Card\EditCard.cshtml" />
+    <Content Include="Views\Card\EditDeck.cshtml" />
+    <Content Include="Views\Card\Shuffle.cshtml" />
+    <Content Include="Views\Card\SingleCard.cshtml" />
+    <Content Include="Views\Card\UserDecks.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

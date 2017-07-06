@@ -1,0 +1,114 @@
+﻿@model MagicWebsite.Models.CardsVM
+@{
+    ViewBag.Title = "Edit Card";
+}
+@if ((string)Session["Role"] == "Admin" || (string)Session["Role"] == "Mod")
+{
+    <h2>Edit Card</h2>
+    using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.ID)
+            <div class="form-group">
+                <strong class="control-label col-md-2">Picture</strong>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.PictureURL, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.PictureURL, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <strong class="control-label col-md-2">Name</strong>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <strong class="control-label col-md-2">CMC</strong>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CMC, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CMC, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <strong class="control-label col-md-2">Card Color</strong>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CardColor, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CardColor, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <strong class="control-label col-md-2">Attack</strong>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Attack, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Attack, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <strong class="control-label col-md-2">Defense</strong>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Defense, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Defense, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <strong class="control-label col-md-2">Cardtype</strong>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Cardtype, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Cardtype, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <strong class="control-label col-md-2">Subtype</strong>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Subtype, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Subtype, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <strong class="control-label col-md-2">Ability</strong>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Ability, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Ability, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <strong class="control-label col-md-2">Rarity</strong>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Rarity, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Rarity, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <strong class="control-label col-md-2">Set</strong>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Set, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Set, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <strong class="control-label col-md-2">Flavortext</strong>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Flavortext, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Flavortext, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+    <div>
+        @Html.ActionLink("Back to List", "CardIndex")
+    </div>
+}
+else
+{
+    <h1>I'm sorry; an error occurred.</h1>
+}

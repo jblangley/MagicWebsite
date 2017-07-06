@@ -1,0 +1,83 @@
+﻿@model MagicWebsite.Models.CardsVM
+@{
+    ViewBag.Title = "Card Details";
+}
+<h2>Card Details</h2>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt></dt>
+        <dd>
+            <img src="@Url.Content(Model.PictureURL)" />
+        </dd>
+        <dt>
+            <strong>Name</strong>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            <strong>CMC</strong>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CMC)
+        </dd>
+        <dt>
+            <strong>Card Color</strong>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CardColor)
+        </dd>
+        <dt>
+            <strong>Attack</strong>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Attack)
+        </dd>
+        <dt>
+            <strong>Defense</strong>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Defense)
+        </dd>
+        <dt>
+            <strong>Cardtype</strong>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cardtype)
+        </dd>
+        <dt>
+            <strong>Subtype</strong>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Subtype)
+        </dd>
+        <dt>
+            <strong>Ability</strong>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Ability)
+        </dd>
+        <dt>
+            <strong>Rarity</strong>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Rarity)
+        </dd>
+        <dt>
+            <strong>Set</strong>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Set)
+        </dd>
+        <dt>
+            <strong>Flavortext</strong>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Flavortext)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "UserDeck")
+</p>   

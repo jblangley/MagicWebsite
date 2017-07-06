@@ -1,0 +1,31 @@
+﻿@model IEnumerable<MagicWebsite.Models.CardsVM>
+
+@{
+    ViewBag.Title = "Shuffle Deck";
+}
+
+<h2>Shuffle Deck</h2>
+
+<p>
+    @Html.ActionLink("Shuffle Deck", "Shuffle")
+    @Html.ActionLink("Go Back To Deck", "GoBackToEditDeckFromShuffle")
+</p>
+
+
+<div class="row-fluid">
+    <div class="span2">
+        <div class="item">
+            @foreach (var image in Model)
+            {
+                <div style="margin:10px; float:left;
+                         overflow:hidden; ">
+                    <div class="zoom">
+                        <img src="@Url.Content(image.PictureURL)" />
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
