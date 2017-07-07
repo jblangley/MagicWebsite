@@ -192,14 +192,17 @@ namespace MagicWebsite.Controllers
         //Shows a single deck of cards attached to a user
         public ActionResult EditDeck(int id)
         {
+            List<CardsVM> cards = Mapper.Map<List<CardsVM>>(CardsLogic.GetSingleDeck(id));
+            cards.Sort(delegate (CardsVM c1, CardsVM c2) { return c1.Name.CompareTo(c2.Name); });
+            return View(cards);
+        }
+        public void SetSessDeck(int id)
+        {
             UserVM user = new UserVM();
             DeckVM deck = new DeckVM();
             user = SessAcc.GetUserInfoSess();
             deck.ID = id;
             SessAcc.SetSessionAccessor(user, deck);
-            List<CardsVM> cards = Mapper.Map<List<CardsVM>>(CardsLogic.GetSingleDeck(id));
-            cards.Sort(delegate (CardsVM c1, CardsVM c2) { return c1.Name.CompareTo(c2.Name); });
-            return View(cards);
         }
         //Shuffles cards attached to a user
         public ActionResult Shuffle()
@@ -216,11 +219,32 @@ namespace MagicWebsite.Controllers
                 return View();
             }
         }
+        [HttpGet]
         public ActionResult GoBackToEditDeckFromShuffle()
         {
-            int id = SessAcc.GetDeckId();
-            List<CardsVM> model = Mapper.Map<List<CardsVM>>(CardsLogic.GetSingleDeck(id));
-            return View(model);
+            try
+            {
+                int deckid = SessAcc.GetDeckId();
+                List<CardsVM> model = Mapper.Map<List<CardsVM>>(CardsLogic.GetSingleDeck(deckid));
+                return RedirectToAction("EditDeck", new { id = deckid });
+            }
+            catch
+            {
+                return View();
+            }
+        }
+        [HttpGet]
+        public ActionResult SetDeckFromUserDeck(int id)
+        {
+            try
+            {
+                SetSessDeck(id);
+                return RedirectToAction("CardIndex");
+            }
+            catch
+            {
+                return View();
+            }
         }
     }
 }

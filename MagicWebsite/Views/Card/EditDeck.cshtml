@@ -20,7 +20,7 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.ActionLink("Remove", "DeleteCardFromDeck", new { cardid = item.ID })
+                @Html.ActionLink("Remove", "DeleteCardFromDeck", new { cardid = item.ID }) |
                 @Html.ActionLink("Add", "AddCardToDeckFromDeck", new { cardid = item.ID })
             </td>
         </tr>
