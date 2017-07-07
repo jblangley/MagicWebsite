@@ -8,7 +8,7 @@ using System.Data;
 
 namespace DAL
 {
-    class DAO : IDAO
+    public class DAO : IDAO
     {
         public string ConnectionString = @"Server=.\SQLEXPRESS;Database=Capstone;Trusted_Connection=True;";
 

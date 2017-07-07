@@ -1,12 +1,14 @@
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(DAL.App_Start.NinjectWebCommon), "Start")]
-[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(DAL.App_Start.NinjectWebCommon), "Stop")]
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(MagicWebsite.App_Start.NinjectWebCommon), "Start")]
+[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(MagicWebsite.App_Start.NinjectWebCommon), "Stop")]
 
-namespace DAL.App_Start
+namespace MagicWebsite.App_Start
 {
     using System;
     using System.Web;
-
+    using BLL;
+    using DAL;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
+    using MagicWebsite.Models;
 
     using Ninject;
     using Ninject.Web.Common;
@@ -61,6 +63,12 @@ namespace DAL.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            kernel.Bind<IDAO>().To<DAO>();
+            kernel.Bind<IUserDAO>().To<UserDAO>();
+            kernel.Bind<IUserLogic>().To<UserLogic>();
+            kernel.Bind<ISessionAccessor>().To<SessionAccessor>();
+            kernel.Bind<ICardsDAO>().To<CardsDAO>();
+            kernel.Bind<ICardsLogic>().To<CardsLogic>();
         }        
     }
 }

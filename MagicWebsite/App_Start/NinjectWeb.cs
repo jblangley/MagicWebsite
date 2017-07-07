@@ -1,6 +1,6 @@
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(DAL.App_Start.NinjectWeb), "Start")]
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(MagicWebsite.App_Start.NinjectWeb), "Start")]
 
-namespace DAL.App_Start
+namespace MagicWebsite.App_Start
 {
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
