@@ -2,71 +2,30 @@
 @{
     ViewBag.Title = "Cards";
 }
-<h2>Card Database</h2>
+<h1>Card Database</h1>
 @if ((string)Session["Role"] == "Admin" || (string)Session["Role"] == "Mod")
 {
-    <p>
-        @Html.ActionLink("Create New Card", "CreateCard")
-    </p>
+        <button>@Html.ActionLink("Create New Card", "CreateCard")</button>
 }
-<table class="table">
-    <tr>
-        <th>
-            <strong>Picture</strong>
-        </th>
-        <th>
-            <strong>Name</strong>
-        </th>
-        <th>
-            <strong>Cardtype</strong>
-        </th>
-        <th>
-            <strong>Ability</strong>
-        </th>
-        <th>
-            <strong>Rarity</strong>
-        </th>
-        <th>
-            <strong>Set</strong>
-        </th>
-        <th></th>
-    </tr>
-    @foreach (var item in Model)
-    {
-        <tr>
-            @Html.HiddenFor(model => item.ID)
-            <td>
-                <img src="@Url.Content(item.PictureURL)" />
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cardtype)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ability)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Rarity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Set)
-            </td>
+<p>Count: @Model.Count()</p>
+
+@foreach (var p in Model)
+{
+    <div class="col-md-3">
+        <div class="well well-sm">
+            <img src="@Url.Content(p.PictureURL)" />
+            <h3>@p.Name - @p.Cardtype</h3>
+            
             @if ((string)Session["Role"] == "Admin" || (string)Session["Role"] == "Mod")
             {
-                <td>
-                    @Html.ActionLink("Edit", "EditCard", new { name = item.Name })
-                    @Html.ActionLink("Delete", "DeleteCard", new { name = item.Name })
-                    @Html.ActionLink("Add Card", "AddCardToDeck", new { cardid = item.ID })
-                </td>
+                   <button> @Html.ActionLink("Edit", "EditCard", new { name = p.Name })</button>
+                   <button>@Html.ActionLink("Delete", "DeleteCard", new { name = p.Name })</button>
+                    <button>@Html.ActionLink("Add Card", "AddCardToDeck", new { cardid = p.ID })</button>
             }
             else
             {
-                <td>
-                    @Html.ActionLink("Add Card", "AddCardToDeck", new { cardid = item.ID })
-                </td>
+                    <button>@Html.ActionLink("Add Card", "AddCardToDeck", new { cardid = p.ID })</button>
             }
-        </tr>
-    }
-</table>
+        </div>
+    </div>
+}

@@ -27,6 +27,20 @@ namespace MagicWebsite.Controllers
             cards.Sort(delegate (CardsVM c1, CardsVM c2) { return c1.Name.CompareTo(c2.Name); });
             return View(cards);
         }
+        //Filter Cards
+        [HttpPost]
+        public ActionResult CardIndex(List<CardsVM> cards, string compare)
+        {
+            List<CardsVM> filter = new List<CardsVM>();
+            for (int index = 0; index < cards.Count; index++)
+            {
+                if (cards[index].CardColor == compare)
+                {
+                    filter.Add(cards[index]);
+                }
+            }
+            return View(cards);
+        }
         //Shows a single card from the database
         public ActionResult SingleCard(string name)
         {
@@ -131,6 +145,7 @@ namespace MagicWebsite.Controllers
                 return RedirectToAction("CardIndex");
             }
         }
+       // // // // // Attach this method
         [HttpGet]
         public ActionResult AddCardToDeckFromDeck(int cardId)
         {
@@ -194,6 +209,7 @@ namespace MagicWebsite.Controllers
         {
             List<CardsVM> cards = Mapper.Map<List<CardsVM>>(CardsLogic.GetSingleDeck(id));
             cards.Sort(delegate (CardsVM c1, CardsVM c2) { return c1.Name.CompareTo(c2.Name); });
+            SetSessDeck(id);
             return View(cards);
         }
         public void SetSessDeck(int id)
@@ -204,7 +220,7 @@ namespace MagicWebsite.Controllers
             deck.ID = id;
             SessAcc.SetSessionAccessor(user, deck);
         }
-        //Shuffles cards attached to a user
+        //Shuffles cards attached to a deck
         public ActionResult Shuffle()
         {
             try
@@ -233,7 +249,7 @@ namespace MagicWebsite.Controllers
                 return View();
             }
         }
-        [HttpGet]
+        [HttpPost]
         public ActionResult SetDeckFromUserDeck(int id)
         {
             try

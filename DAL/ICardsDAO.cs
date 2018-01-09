@@ -15,6 +15,10 @@ namespace DAL
 
         List<CardsDM> GetCards();
 
+        List<CardsDM> GetCardsByColor(string color);
+
+        List<CardsDM> GetCardsBySet(string set);
+
         CardsDM GetCard(string name);
 
         void CreateCard(CardsDM card);

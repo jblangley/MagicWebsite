@@ -21,6 +21,24 @@ namespace BLL
         {
             return Mapper.Map<List<CardsSM>>(CardData.GetCards());
         }
+        //Gets cards of one color
+        public List<CardsSM> GetCardsByColor(string color)
+        {
+            //Method in presentation needs to be made
+            return Mapper.Map<List<CardsSM>>(CardData.GetCardsByColor(color));
+        }
+        //Gets cards by set
+        public List<CardsSM> GetCardsBySet(string set)
+        {
+            //Method in presentation needs to be made
+            return Mapper.Map<List<CardsSM>>(CardData.GetCardsBySet(set));
+        }
+        //Sorts the current cards by cost
+        public List<CardsSM> SortAllCardsByCost(List<CardsSM> unfiltered)
+        {
+            List<CardsSM> filtered = unfiltered.OrderBy(o=>o.CMC).ToList();
+            return filtered;
+        }
         //Gets a card's details
         public CardsSM GetSingleCard(string name)
         {

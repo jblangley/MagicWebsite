@@ -105,6 +105,28 @@ namespace DAL
                 return null;
             }
         }
+        public List<CardsDM> GetCardsByColor(string color)
+        {
+            try
+            {
+                return ReadCards(new SqlParameter[] { new SqlParameter("@CardColor", color) }, "GetCardsByColor");
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public List<CardsDM> GetCardsBySet(string set)
+        {
+            try
+            {
+                return ReadCards(new SqlParameter[] { new SqlParameter("@Set", set) }, "GetCardsBySet");
+            }
+            catch
+            {
+                return null;
+            }
+        }
         //Gets the details of a single card
         public CardsDM GetCard(string name)
         {

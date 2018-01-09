@@ -4056,6 +4056,10 @@ textarea.input-group-sm > .input-group-btn > .btn {
   }
 }
 
+.navbar-header{
+    color: black,
+}
+
 .navbar-header:before,
 .navbar-header:after {
   display: table;
@@ -4403,26 +4407,26 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-default .navbar-nav > li > a {
-  color: #777777;
+  color: black;
 }
 
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-  color: #333333;
+  color: black;
   background-color: transparent;
 }
 
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
-  color: #555555;
+  color: black;
   background-color: #e7e7e7;
 }
 
 .navbar-default .navbar-nav > .disabled > a,
 .navbar-default .navbar-nav > .disabled > a:hover,
 .navbar-default .navbar-nav > .disabled > a:focus {
-  color: #cccccc;
+  color: black;
   background-color: transparent;
 }
 
@@ -4501,8 +4505,9 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-inverse {
-  background-color: #222222;
+  background-color: #2a6496;
   border-color: #080808;
+  border-width: 0px, 0px, 3px, 0px;
 }
 
 .navbar-inverse .navbar-brand {
@@ -4516,11 +4521,11 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-inverse .navbar-text {
-  color: #999999;
+  color: #2432d5;
 }
 
 .navbar-inverse .navbar-nav > li > a {
-  color: #999999;
+  color: #e5d200;
 }
 
 .navbar-inverse .navbar-nav > li > a:hover,
